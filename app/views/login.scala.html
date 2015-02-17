@@ -1,0 +1,26 @@
+@import helper._
+@(loginForm:Form[Login])
+@main("Login"){
+
+<div id="gridContainer">
+    <h1>Login </h1>
+
+    @helper.form(action = routes.Application.attemptLogin()){
+    <fieldset>
+        <p>
+            @helper.inputText(loginForm("emailIn"),'_label -> "Email Address")
+        </p>
+        <p>
+            @helper.inputText(loginForm("passwordIn"),'_label -> "Password")
+        </p>
+    </fieldset>
+    <p>
+        <input name="submit" type="submit" id="submit" value="Login">
+    </p>
+
+
+</div>
+
+}
+
+}

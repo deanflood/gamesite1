@@ -1,0 +1,20 @@
+# Routes
+
+#Get Methods
+GET     /                           controllers.Application.index()
+GET     /home                       controllers.Application.index()
+GET     /index                      controllers.Application.index()
+GET     /register                   controllers.Application.register()
+GET     /custlist                   controllers.Application.custList()
+GET	/cart                       controllers.Application.cart()
+GET	/contact                    controllers.Application.contact()
+GET	/login                      controllers.Application.login()
+#GET     /product                    controllers.Application.product()
+#GET     /product/:prod_id           controllers.Application.details(prod_id: String)
+
+#Post Methods
+POST    /register                   controllers.Application.custSubmit()
+POST    /login                      controllers.Application.attemptLogin()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /public/*file               controllers.Assets.at(path="/public", file)
