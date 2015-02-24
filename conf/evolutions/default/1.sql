@@ -4,9 +4,7 @@
 # --- !Ups
 
 create table customer (
-  id                        bigint not null,
-  date                      timestamp,
-  cust_id                   varchar(255),
+  cust_id                   bigint not null,
   cust_fname                varchar(255),
   cust_lname                varchar(255),
   date_of_birth             timestamp,
@@ -16,7 +14,7 @@ create table customer (
   city                      varchar(255),
   phone_num                 varchar(255),
   password                  varchar(255),
-  constraint pk_customer primary key (id))
+  constraint pk_customer primary key (cust_id))
 ;
 
 create table login (

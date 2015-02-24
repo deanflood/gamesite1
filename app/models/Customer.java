@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.text.*;
+
 //Imports required for Message Digest
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,18 +15,15 @@ import play.db.ebean.*;
 
 @Entity
 public class Customer extends Model  {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        Date date = new Date();
-        
+               
         @Id
-        public Long id;
-         //@Constraints.Required
-	public String cust_id;
+        public Long cust_id;
          //@Constraints.Required
 	public String cust_fname;
          //@Constraints.Required
 	public String cust_lname;
         // @Constraints.Required
+        
 	public Date dateOfBirth; 
         // @Constraints.Required
         public String email;
@@ -52,7 +50,7 @@ public Customer(String fn, String ln, Date dob, String em, String a1, String a2,
     city = c;
     phoneNum = pn;
     password = pw; 
-    id++;
+    
 }
     
 public static Finder<Long, Customer> find = new Finder<Long, Customer>(Long.class, Customer.class);

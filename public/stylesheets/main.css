@@ -1,98 +1,103 @@
 body {
-	background-image: url('../Images/backgroundpattern.jpg');
-	background-repeat: repeat;
-	background-size: auto;
-	display: inline;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+    background-image: url('../Images/backgroundpattern.jpg');
+    background-repeat: repeat;
+    background-size: auto;
+    display: inline;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
 }
 #mainBody {
-	color: #215183;
-	width: 960px;
-	height: 1058px;
-	min-width: 960px;
-	margin-top: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: auto;
-	background-color: #6994AA;
-	display: block;
-	text-align: center;
+    color: #476BB2;
+    width: 960px;
+    height: 1058px;
+    min-width: 960px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    background-color: #6994AA;
+    display: block;
+    text-align: center;
 }
 #mainContainer {
-	height: auto;
+    height: auto;
 }
 #navBar {
-	text-align: center;
-	background-color: #689DBA;
+    text-align: center;
+    background-color: #689DBA;
 }
 #headBar {
-	text-align: center;
-	background-color: #5B9A97;
-	display: block;
-	margin-top: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: auto;
-	min-width: 960px;
-	width: 960px;
-	padding-bottom: 30px;
-	padding-top: 10px;
+    text-align: center;
+    background-color: #5B9A97;
+    display: block;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    min-width: 960px;
+    width: 960px;
+    padding-bottom: 30px;
+    padding-top: 10px;
 }
 #platformBar {
-	text-align: center;
-	background-color: #92BACC;
-	display: block;
-	margin-top: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: auto;
-	min-width: 960px;
-	width: 960px;
+    text-align: center;
+    background-color: #92BACC;
+    display: block;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    min-width: 960px;
+    width: 960px;
 }
 #mainBanner {
-	background-color: #8CA0B9;
-	text-align: center;
+    background-color: #8CA0B9;
+    text-align: center;
 }
 #gridContainer {
-	text-align: center;
-	background-color: #6893AA;
-	height: auto;
-	display: inline-block;
+    text-align: center;
+    background-color: #6893AA;
+    height: auto;
+    display: inline-block;
 }
 #mainFooter {
-	background-color: #2D3A4C;
-	text-align: center;
+    background-color: #2D3A4C;
+    text-align: center;
 }
 #saleBanner {
-	text-align: center;
-	background-color: #75B3D4;
+    text-align: center;
+    background-color: #75B3D4;
 }
 #gridContainer h1  {
-	text-align: center;
+    text-align: center;
 }
 #gridContainer form  {
-	text-align: right;
-	display: inline-block;
+    text-align: right;
+    display: inline-block;
 }
 .shoppingcart {
-	text-align: center;
-	border-style: none;
+    text-align: center;
+    border-style: none;
 }
 .homegridtable {
-	display: inline-table;
-	text-align: center;
+    display: inline-table;
+    text-align: center;
 }
 .updateStock {
-	display: inline-block;
-	text-align: center;
-	border-style: none;
+    display: inline-block;
+    text-align: center;
+    border-style: none;
 }
 .reviewstock {
-	display: inline-block;
-	text-align: center;
-	border-style: none;
+    display: inline-block;
+    text-align: center;
+    border-style: none;
+}
+
+table, th, td {
+    border: 1px solid black;
 }
 .wishlist {
 }
+
