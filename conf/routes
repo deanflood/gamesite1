@@ -1,20 +1,89 @@
 # Routes
 
-#Get Methods
-GET     /                           controllers.Application.index()
-GET     /home                       controllers.Application.index()
-GET     /index                      controllers.Application.index()
-GET     /register                   controllers.Application.register()
-GET     /custlist                   controllers.Application.custList()
-GET	/cart                       controllers.Application.cart()
-GET	/contact                    controllers.Application.contact()
-GET	/login                      controllers.Application.login()
-#GET     /product                    controllers.Application.product()
-#GET     /product/:prod_id           controllers.Application.details(prod_id: String)
+# Application Controller Get Methods
+GET     /                                       controllers.Application.shopfront()
+GET     /home                                   controllers.Application.index()
+GET     /index                                  controllers.Application.shopfront()
+GET	/contact                                controllers.Application.contact()
 
-#Post Methods
-POST    /register                   controllers.Application.custSubmit()
-POST    /login                      controllers.Application.attemptLogin()
+
+#Customer Controller GET Methods
+GET     /register                               controllers.CustomerController.register()
+GET     /custlist                               controllers.CustomerController.customerList()
+GET	/cart                                   controllers.CustomerController.cart()
+GET     /account                                controllers.CustomerController.account()
+GET     /wishlist                               controllers.CustomerController.wishList()
+GET     /purchase                               controllers.CustomerController.purchase()
+GET     /editcustomer/:cust_id                  controllers.CustomerController.editCustomer(cust_id:Long)
+GET	/customer/delete/:cust_id               controllers.CustomerController.deleteCustomer(cust_id:Long)
+GET     /updateContact/:contact_id              controllers.ManagementController.updateContact(contact_id:Long)
+GET     /removefromwishlist/:cust_id/:prod_id   controllers.CustomerController.removeFromWishlist(cust_id:Long, prod_id:Long)
+GET	/login                                  controllers.CustomerController.login()
+GET     /logout                                 controllers.CustomerController.logout()
+GET     /editaccount/:cust_id                   controllers.CustomerController.editAccount(cust_id: Long)
+
+#Customer Controller POST Methods
+POST    /pay/cust_id/cart_id                    controllers.CustomerController.pay(cust_id: Long, cart_id:Long)
+POST    /editcustomer/                          controllers.CustomerController.custEdit()
+POST    /register                               controllers.CustomerController.custSubmit()
+POST    /contact                                controllers.CustomerController.contactSubmit()
+POST    /addtowishlist/:cust_id/:prod_id        controllers.CustomerController.addToWishList(cust_id:Long, prod_id:Long)
+POST    /authenticate                           controllers.CustomerController.authenticate()
+POST    /admineditcustomer                      controllers.CustomerController.adminCustEdit()
+
+
+#Product Controller Methods GET Methods
+GET     /prodlist                               controllers.ProductsController.productOverview()
+GET     /prodlist/genre/:genre                  controllers.ProductsController.genreView(genre:String)
+GET     /prodlist/name/                         controllers.ProductsController.nameView()
+GET     /prodlist/platform/:platform            controllers.ProductsController.platformView(platform:String)
+GET     /prodlist/sale                          controllers.ProductsController.saleView()
+GET     /product/new                            controllers.ProductsController.addProduct()
+GET     /product/:prod_id                       controllers.ProductsController.displayProduct(prod_id:Long)
+GET     /image/:prod_id                         controllers.ProductsController.image(prod_id: Long)
+GET     /checkout                               controllers.ProductsController.checkOut()
+GET     /edit/:prod_id                          controllers.ProductsController.edit(prod_id:Long)
+GET	/product/delete/:prod_id                controllers.ProductsController.delete(prod_id:Long)
+GET     /prodlist/:platform/:platform2          controllers.ProductsController.companyView(platform:String, platform2:String)
+GET     /reviewgame/:prod_id/:i                 controllers.ProductsController.reviewGame(prod_id:Long, i:Int)
+GET     /removeFromCart/:cart_id/:prod_id       controllers.ProductsController.removeFromCart(cart_id:Long, prod_id:Long)
+GET     /prodlist/popular                       controllers.ProductsController.viewbyRating()
+
+#Product Controller POST Methods
+POST    /checkout                               controllers.ProductsController.checkOut()
+POST    /product                                controllers.ProductsController.save()
+POST    /addtocart/:cust_id/:prod_id            controllers.ProductsController.addToCart(cust_id:Long, prod_id:Long)
+POST    /orderdetails/:shoppingcart_id          controllers.ProductsController.markAsShipped(shoppingcart_id: Long)
+
+
+#Management Controller GET Methods
+GET     /portal                                 controllers.ManagementController.portal()
+GET     /addadmin                               controllers.ManagementController.addAdmin()
+GET	/employeelogin                          controllers.ManagementController.employeelogin()
+GET     /employeelogout                         controllers.ManagementController.logout()
+GET     /contactList                            controllers.ManagementController.contactList()
+GET     /contactList/:status                    controllers.ManagementController.contactByStatus(status:String)
+GET     /orders                                 controllers.ManagementController.orders()
+GET     /orders/:status                         controllers.ManagementController.orderByStatus(status:String)
+GET     /orderdetails/:shoppingcart_id          controllers.ManagementController.orderDetails(shoppingcart_id: Long)
+GET     /adminprodlist                          controllers.ManagementController.adminProdList()
+GET     /cancelOrder:shoppingcart_id            controllers.ManagementController.cancelOrder(shoppingcart_id: Long)
+GET     /sale                                   controllers.ManagementController.createsale()
+GET     /undosale                               controllers.ManagementController.undoSale()
+GET     /portal/sale                            controllers.ManagementController.sale()
+GET     /reports                                controllers.ManagementController.reports()
+GET     /reports/customer                       controllers.ManagementController.customerreports()
+GET     /reports/genre                          controllers.ManagementController.genrereports()
+GET     /reports/profit                         controllers.ManagementController.profitreports()
+
+
+#Management Controller POST Methods 
+POST    /addadmin                               controllers.ManagementController.empSubmit() 
+POST    /employeeauthenticate                   controllers.ManagementController.employeeauthenticate()
+POST    /edit                                   controllers.ManagementController.confirmProdEdit()
+
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /public/*file               controllers.Assets.at(path="/public", file)
+GET     /public/*file                           controllers.Assets.at(path="/public", file)
+

@@ -1,0 +1,104 @@
+03-19 18:36:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "07101991"; SQL statement:
+INSERT INTO "PUBLIC"."CUSTOMER"("CUST_ID","CUST_FNAME","CUST_LNAME","DATE_OF_BIRTH","ADDRESS1","ADDRESS2","CITY","COUNTRY","PHONE_NUM","EMAIL","PASSWORD")VALUES(?,?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11) [22007-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:161)
+	at org.h2.value.ValueDate.parse(ValueDate.java:70)
+	at org.h2.value.Value.convertTo(Value.java:841)
+	at org.h2.table.Column.convert(Column.java:145)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:144)
+	at org.h2.command.dml.Insert.update(Insert.java:115)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:154)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:140)
+	at org.h2.result.UpdatableRow.insertRow(UpdatableRow.java:320)
+	at org.h2.jdbc.JdbcResultSet.insertRow(JdbcResultSet.java:2893)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1031)
+	at org.h2.server.web.WebApp.process(WebApp.java:225)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:168)
+	at org.h2.server.web.WebThread.process(WebThread.java:138)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalArgumentException: 07101991
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:270)
+	at org.h2.value.ValueDate.parse(ValueDate.java:68)
+	... 16 more
+03-19 18:36:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "07101991"; SQL statement:
+INSERT INTO "PUBLIC"."CUSTOMER"("CUST_ID","CUST_FNAME","CUST_LNAME","DATE_OF_BIRTH","ADDRESS1","ADDRESS2","CITY","COUNTRY","PHONE_NUM","EMAIL","PASSWORD")VALUES(?,?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11) [22007-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:161)
+	at org.h2.value.ValueDate.parse(ValueDate.java:70)
+	at org.h2.value.Value.convertTo(Value.java:841)
+	at org.h2.table.Column.convert(Column.java:145)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:144)
+	at org.h2.command.dml.Insert.update(Insert.java:115)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:154)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:140)
+	at org.h2.result.UpdatableRow.insertRow(UpdatableRow.java:320)
+	at org.h2.jdbc.JdbcResultSet.insertRow(JdbcResultSet.java:2893)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1031)
+	at org.h2.server.web.WebApp.process(WebApp.java:225)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:168)
+	at org.h2.server.web.WebThread.process(WebThread.java:138)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalArgumentException: 07101991
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:270)
+	at org.h2.value.ValueDate.parse(ValueDate.java:68)
+	... 16 more
+03-19 18:37:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "1991/10/07"; SQL statement:
+INSERT INTO "PUBLIC"."CUSTOMER"("CUST_ID","CUST_FNAME","CUST_LNAME","DATE_OF_BIRTH","ADDRESS1","ADDRESS2","CITY","COUNTRY","PHONE_NUM","EMAIL","PASSWORD")VALUES(?,?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11) [22007-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:161)
+	at org.h2.value.ValueDate.parse(ValueDate.java:70)
+	at org.h2.value.Value.convertTo(Value.java:841)
+	at org.h2.table.Column.convert(Column.java:145)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:144)
+	at org.h2.command.dml.Insert.update(Insert.java:115)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:154)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:140)
+	at org.h2.result.UpdatableRow.insertRow(UpdatableRow.java:320)
+	at org.h2.jdbc.JdbcResultSet.insertRow(JdbcResultSet.java:2893)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1031)
+	at org.h2.server.web.WebApp.process(WebApp.java:225)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:168)
+	at org.h2.server.web.WebThread.process(WebThread.java:138)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalArgumentException: 1991/10/07
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:270)
+	at org.h2.value.ValueDate.parse(ValueDate.java:68)
+	... 16 more
+03-19 18:37:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "1991/10/07"; SQL statement:
+INSERT INTO "PUBLIC"."CUSTOMER"("CUST_ID","CUST_FNAME","CUST_LNAME","DATE_OF_BIRTH","ADDRESS1","ADDRESS2","CITY","COUNTRY","PHONE_NUM","EMAIL","PASSWORD")VALUES(?,?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11) [22007-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:161)
+	at org.h2.value.ValueDate.parse(ValueDate.java:70)
+	at org.h2.value.Value.convertTo(Value.java:841)
+	at org.h2.table.Column.convert(Column.java:145)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:144)
+	at org.h2.command.dml.Insert.update(Insert.java:115)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:154)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:140)
+	at org.h2.result.UpdatableRow.insertRow(UpdatableRow.java:320)
+	at org.h2.jdbc.JdbcResultSet.insertRow(JdbcResultSet.java:2893)
+	at org.h2.server.web.WebApp.editResult(WebApp.java:1031)
+	at org.h2.server.web.WebApp.process(WebApp.java:225)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:168)
+	at org.h2.server.web.WebThread.process(WebThread.java:138)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalArgumentException: 1991/10/07
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:270)
+	at org.h2.value.ValueDate.parse(ValueDate.java:68)
+	... 16 more

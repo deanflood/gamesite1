@@ -1,0 +1,79 @@
+@(contacts:List[Contact])
+@dashboardMain("Contact List"){
+
+@if(contacts.isEmpty()){
+<div id="querypage">
+              <div id ="noOrders">
+              <p style ="color: red">No Contacts Match @flash.get("success")</p>
+           </div>
+                  <div class="querydisplaybuttons" id="querydisplaybuttons">
+                
+                      <div class="querybutton" id="queryopenbutton"><a href="@routes.ManagementController.contactByStatus("Open")"><img src="@routes.Assets.at("images/icon/openbutton.png")" width="160" height="35" alt=""/></a>
+                                                                   
+                      </div>
+                      
+                      <div class="querybutton" id="queryclosedbutton"> <a href="@routes.ManagementController.contactByStatus("Closed")"><img src="@routes.Assets.at("images/icon/closedbutton.png")" width="160" height="35" alt=""/></a>
+                      </div>
+                      
+                      <div class="querybutton" id="queryallbutton"> <a href="@routes.ManagementController.contactList()"><img src="@routes.Assets.at("images/icon/allbutton.png")" width="160" height="35" alt=""/></a>
+                      </div>
+                      
+                    </div>
+              </div>
+}else{
+
+<div id="querypage">
+              
+                  <div class="querydisplaybuttons" id="querydisplaybuttons">
+                
+                      <div class="querybutton" id="queryopenbutton"><a href="@routes.ManagementController.contactByStatus("Open")"><img src="@routes.Assets.at("images/icon/openbutton.png")" width="160" height="35" alt=""/></a>
+                                                                   
+                      </div>
+                      
+                      <div class="querybutton" id="queryclosedbutton"> <a href="@routes.ManagementController.contactByStatus("Closed")"><img src="@routes.Assets.at("images/icon/closedbutton.png")" width="160" height="35" alt=""/></a>
+                      </div>
+                      
+                      <div class="querybutton" id="queryallbutton"> <a href="@routes.ManagementController.contactList()"><img src="@routes.Assets.at("images/icon/allbutton.png")" width="160" height="35" alt=""/></a>
+                      </div>
+                      
+                    </div>
+              </div>
+
+<div id="queryfiller"></div>
+@for(contact <- contacts){
+              <div id="queryContainer" class="queryPage">
+                  
+                  <div id="allquery"><!--looping div start-->
+                    <div class="queryleft" id="queryleft">
+                        <div class="querybox" id="querybox">
+                        <p>@contact.query</p>
+                        </div>
+                    </div>
+                 
+                    	<div class="queryright" id="queryright">
+                      
+                              <div class="queryinfo" id="queryinfo">
+                              <h2>Topic: @contact.topic</h2>
+                              <p>Email: @contact.cust_email</p>
+                              <p>Date: @{contact.date_created.format("dd-MM-yyyy")}</p>
+                              @if(contact.status.equals("Open")){
+                              <h2 style="color:#0080E9">Status: <span style="color:#FF2C25 ">@contact.status</span></h2>
+                              }else{ <h2 style="color: #0080E9">Status: <span style="color: #67BF1B">@contact.status</span></h2>}
+                                
+                                 <div id="querybuttons">
+                                     <div class="querybutton" id="querybutton"><a href="@routes.ManagementController.updateContact(contact.contact_id)"><input type="image" style="width: 120px; height= 26px; position: relative;" src="@routes.Assets.at("images/icon/changestatus.png")"value="CheckOut"></a></div>
+                                
+                               
+                                </div>
+   
+                              </div>
+            
+                   		</div>
+              
+                   </div><!--looping div end-->
+                
+              </div>}
+
+   
+}
+}

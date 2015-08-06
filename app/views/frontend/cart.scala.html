@@ -1,0 +1,100 @@
+@(customer:Customer, cartList:List[OrderDetails], productList:List[Product])
+@main("Cart", customer){
+ 
+@if(cartList.isEmpty){
+<h1>No Products in your Cart. <a href="@routes.ProductsController.productOverview()">Click here to view games</a></h1>
+}else{
+
+ 
+    <div id="cartMainContainer">       
+         
+		<div id="cartContainer" class="checkoutcontainer">
+                    <p style="color: red">@flash.get("success")</p>   
+       		<div class="cartleft" id="left">
+              @for(i <- 0 until cartList.length){
+              <div class="cartproduct" id="cartproduct"> 
+                    
+                <div id="cartImage" class="cartImage"><a href="@routes.ProductsController.displayProduct(productList{i}.prod_id)" ><img src="@routes.ProductsController.image(productList(i).prod_id)" alt="@productList(i).prod_name" width="100" height="125" id="Image1"></a>
+						</div>
+                        
+                          <div class="cartProdInfo" id="cartProdInfo">
+                       	  <div class="cartgametitle" id="cartInfo">@productList(i).prod_name</div>
+                          <div class="cartgamePlatfrom" id="cartInfo">Platform: @productList(i).platform</div>
+                          <div class="cartgameprice" id="cartInfo">&euro;@("%.2f".format(productList(i).price))</div>
+                          
+                          
+                          <div class="cartquantity" id="cartInfo"><form>
+                
+                <input type="hidden" name="cartId" id="cartId" value = "@cartList(i).shoppingcart_id" size ="1"  >  
+                <input type="hidden" name="pid" id="pid" value = "@productList(i).prod_id" size ="1"  >               
+          
+                     @if(cartList(i).qty < 10){       
+                    <select name="qty" id="qty">     
+                    @if(cartList(i).qty == 1){                    
+                    <option selected value="1">1</option>
+                    } else {<option  value="1">1</option>}
+                    @if(cartList(i).qty == 2){
+                    <option selected value="2">2</option>
+                    } else {<option  value="2">2</option>}
+                    @if(cartList(i).qty == 3){
+                    <option selected value="3">3</option>
+                    } else {<option  value="3">3</option>}
+                    @if(cartList(i).qty == 4){
+                    <option selected value="4">4</option>
+                    } else {<option  value="4">4</option>}
+                    @if(cartList(i).qty == 5){
+                    <option selected value="5">5</option>
+                    } else {<option  value="5">5</option>}
+                    @if(cartList(i).qty == 6){
+                    <option selected value="6">6</option>
+                    } else {<option  value="6">6</option>}
+                    @if(cartList(i).qty == 7){
+                    <option selected value="7">7</option>
+                    } else {<option  value="7">7</option>}
+                    @if(cartList(i).qty == 8){
+                    <option selected value="8">8</option>
+                    } else {<option  value="8">8</option>}
+                    @if(cartList(i).qty == 9){
+                    <option selected value="9">9</option>
+                    } else {<option  value="9">9</option>}
+                    @if(cartList(i).qty == 10){
+                    <option selected value="10">10</option>
+                    } else {<option  value="10">+10</option>}
+                       </select>
+                     }else{
+                      <input type="text" name="qty" id="qty"  onload="this.focus();this.select()" value ="@cartList(i).qty" size ="1">     
+                      }   
+                      
+                 <input type="submit" onlick ="myFunction()" value="Submit">
+                </form></div>
+                          
+                          
+                          <div class="cartLinePrice" id="cartInfo">Price:&euro;@("%.2f".format(cartList(i).line_total))</div>
+                          <div class="deletebutton" id="cartInfo"><a href="@routes.ProductsController.removeFromCart(cartList(i).shoppingcart_id, productList(i).prod_id)" onclick="return confirm('Are you sure you wish to remove this item?');"><img src="@routes.Assets.at("images/icon/deletebutton1.png")""value="delete"></div>
+                        </div>
+              </div>
+              
+              }
+					          
+          </div>
+              
+            <div class="cartbottom" id="bottom">
+              
+                 
+                  
+                   <div class="cartright" id="cartright">
+            	                   
+                    <div class="totalButton" id="total"><a href="@routes.ProductsController.checkOut()" ><img src="@routes.Assets.at("images/icon/proceedtocheckout.png")""value="checkout"></a></div>
+            
+                  
+                  </div>
+                  
+            </div>
+	</div>
+
+	</div>
+
+
+}
+
+}

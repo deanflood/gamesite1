@@ -1,0 +1,30 @@
+@(loginForm: Form[CustomerController.Login], customer: Customer)
+@import helper._
+@main("Customer Login", customer) {
+  @helper.form(routes.CustomerController.authenticate) {
+  @if(flash.contains("success")) {
+    <p>
+        @flash.get("success")
+    </p>
+}
+  <div> 
+             
+       @if(customer != null){
+       <h3>You are already logged in as @customer.email.</h3>
+       <p>Click <a href="@routes.CustomerController.logout"><b>here</b></a> to Logout</p>
+       }else{
+   <h1>Customer Sign in</h1>
+   <p>
+       <input type="email" name="email" placeholder="Email" value="@loginForm("email").value">
+   </p>
+   <p>
+       <input type="password" name="password" placeholder="Password">
+   </p>
+   <p>
+       <button type="submit">Login</button>
+   </p>
+  </div>
+}
+}
+    
+}

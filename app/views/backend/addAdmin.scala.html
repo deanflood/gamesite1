@@ -1,0 +1,41 @@
+@import helper._
+@(empForm:Form[Employee])
+@dashboardMain("Add admin"){
+
+<div id ="gridContainer">
+    <div id="addadmin">
+    
+    
+    <h1>Add Administrator</h1>
+
+    
+       @helper.form(action = routes.ManagementController.empSubmit()){
+    @flash.get("success")
+    <fieldset>
+  <p>
+            @helper.inputText(empForm("emp_fname"),'_label -> "First Name")
+        </p>
+        <p>
+            @helper.inputText(empForm("emp_lname"),'_label -> "Last Name")
+        </p>
+        <p>
+            @helper.inputText(empForm("username"),'_label -> "Username")
+        </p>
+        <p>
+            @helper.inputText(empForm("password"),'_label -> "Password")
+        </p>
+        <p>
+            @helper.inputText(empForm("emp_type"),'_label -> "Employee Type")
+        </p>
+        
+         <input type="submit" class="btn btn-primary" value="Submit">
+    </fieldset>
+    <p>
+       
+    </p>
+    </div>
+</div>
+}
+}
+       
+       

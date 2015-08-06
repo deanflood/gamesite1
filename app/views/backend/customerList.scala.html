@@ -1,0 +1,61 @@
+@(customers:List[Customer])
+@dashboardMain("Customer List"){
+
+<div id ="admincustlist">
+@if(customers.isEmpty()){
+<h2>No customers</h2>}else{
+<div id="orderfiller"></div>
+<!--looping starts here-->
+ @for(customer <- customers){
+              <div id="custviewContainer" class="custviewPage">
+                <div id="allcustview">
+                  
+                  <div class="custviewleft" id="custviewleft">
+                      
+                              <div class="custviewinfo" id="custviewinfoleft">
+                              <h2>CustomerID: @customer.cust_id</h2>
+                             
+   
+                              </div>
+            
+                   		</div>
+                 
+                    	<div class="custviewright" id="custviewright">
+                      
+                              <div class="custviewinfo" id="custviewinforight">
+                              <div id="custviewaddress">
+                              <p>@customer.address1</p>
+                              <p>@customer.address2</p>
+                              <p>@customer.city</p>
+                              <p>@customer.country</p>
+                              </div>
+                              
+                              <div id="custviewemail">
+                               <p>Name: @customer.cust_fname @customer.cust_lname</p>
+                              <p>Date Of Birth: @{customer.date_of_birth.format("dd-MM-yyyy")}</p>
+                              <p>Email: @customer.email</p>
+                              <p>Phone: @customer.phoneNum</p>
+                              </div>
+                                
+                                 <div id="custviewbuttons">
+                                     @helper.form(action = routes.CustomerController.editCustomer(customer.cust_id)){
+                                    <div class="custviewbutton" id="custviewbutton"><input type="image" style="width: 206px; height= 30px; position: relative;" src="@routes.Assets.at("images/icon/edit.png")" value="CheckOut"></div>
+                                    }
+                                    @helper.form(action = routes.CustomerController.deleteCustomer(customer.cust_id)){
+                                    <div class="custviewbutton" id="custdeletebutton"><input onclick="return confirm('Are you sure you wish to delete customer?');" type="image" style="width: 206px; height= 30px; position: relative;" src="@routes.Assets.at("images/icon/deletecust.png")" value="CheckOut"></div>
+                                }
+                               
+                                </div>
+   
+                              </div>
+            
+                   		</div>
+              
+                   </div>
+                
+              </div>
+			  }
+			  }
+<!--looping ends here-->
+
+}

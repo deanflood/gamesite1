@@ -1,0 +1,77 @@
+@(customer:Customer, cart:ShoppingCart, cartList:List[OrderDetails], productList:List[Product])
+@checkoutMain("Check Out", customer){
+ @flash.get("success")
+ 
+<div id="checkoutMainContainer">
+         
+	<div id="checkoutContainer" class="checkoutcontainer">
+                    
+            <div class="checkoutleft" id="left">
+              
+                    
+        @for(i <- 0 until cartList.length){
+            <div class="checkoutproduct" id="checkoutproduct"> 
+                
+                  
+                  
+                <div id="checkoutImage" class="checkoutImage"><a href="@routes.ProductsController.displayProduct(productList(i).prod_id)" ><img src="@routes.ProductsController.image(cartList(i).prod_id)" alt="" width="150" height="188" id="Image1"></a>
+						</div>
+                        
+                        <div class="checkoutProdInfo" id="checkoutProdInfo">
+                       	  <div class="checkoutgametitle" id="checkoutInfo">@productList(i).prod_name</div>
+                          <div class="checkoutgamePlatfrom" id="checkoutInfo">Platform: @productList(i).platform</div>
+                          <div class="checkoutgameprice" id="checkoutInfo" >Unit Price: &euro;@("%.2f".format(productList(i).price))</div>
+                          <div class="checkoutcheckoutquantity" id="checkoutInfo">Quantity: @cartList(i).qty</div>
+                          <div class="checkoutLinePrice" id="checkoutInfo">Line Price: &euro;@("%.2f".format(cartList(i).line_total))</div>
+                        </div>
+            </div>
+        
+        }
+					          
+          </div>
+              
+            <div class="checkoutright" id="right">
+            		<div class="total" id="total"><h2>Order Summary</h2></div>
+                    <div class="total" id="total">Post &amp; Packaging:</div><div id="pp">&euro;@("%.2f".format(cart.shipping_cost))</div>
+                    <div class="total" id="total">Items Total:</div><div id="pp">&euro;@("%.2f".format(cart.total))</div>
+                    <div class="subtotal" id="total">Payment Total:</div><div id="pp" style="color: #A2191B">&euro;@("%.2f".format(cart.subtotal))</div>
+                    @helper.form(action = routes.CustomerController.purchase()){   
+                    <div class="totalButton" id="total"><input type="image" src="@routes.Assets.at("images/icon/checkoutButton4.png")" value="CheckOut"></div>
+                      }                                             
+
+            </div>                  
+              
+            <div class="checkoutbottom" id="bottom">
+              
+                  <div class="addressChange" id="addressChange">
+                      <div id="currentAddressLeft">
+                          <h3>Delivering to</h3>
+                          <p>@cart.billing_address1</p>
+                          <p>@cart.billing_address2</p>
+                          <p>@cart.billing_city</p>
+                          <p>@cart.billing_country</p>
+                          
+                      
+                      </div>                      
+                      
+                      <div id="newAddressRight">
+                          <div id="checkOutHeader"><h3>Change Delivery Address</h3></div>
+                          <div id="checkOutForm">
+                           <form>                         
+                               <div><label>Address Line 1</label></div><div><input type="text" name="address1" id="address1"  size ="30" ></div>
+                               <div><label>Address Line 2</label></div><div><input type="text" name="address2" id="address2"  onload="this.focus();this.select()" value ="" size ="30" ></div> 
+                          <div><label>City</label></div><div><input type="text" name="city" id="city"  onload="this.focus();this.select()" value ="" size ="30" > </div> 
+                       <div><label>Country</label></div><div><input type="text" name="country" id="country"  onload="this.focus();this.select()" value ="" size ="30" >  </div>                         
+                       <div><input type="submit" onlick ="myFunction()" value="Submit"> </div>                          
+                      </form>
+                          </div>
+                          
+                      </div>
+                                
+            </div>
+            </div>
+            
+	</div>
+</div>       
+   
+}

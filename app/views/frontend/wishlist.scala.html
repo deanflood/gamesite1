@@ -1,0 +1,64 @@
+@(customer:Customer, productList:List[Product])
+@main("Cart", customer){
+ 
+@if(productList.isEmpty){
+<h1>No Products in your WishList! <a href="@routes.ProductsController.productOverview()">Click here to view games</a></h1>
+}else{
+
+
+ 
+    <div id="wishlistMainContainer">
+         
+         
+		<div id="cartContainer" class="checkoutcontainer">
+                    <h1>@customer.cust_fname's WishList</h1>
+            
+       		<div class="cartleft" id="left">
+              @for(i <- 0 until productList.length){
+              <div class="cartproduct" id="cartproduct"> 
+                    
+                <div id="cartImage" class="cartImage"><a href="@routes.ProductsController.displayProduct(productList(i).prod_id)" ><img src="@routes.ProductsController.image(productList(i).prod_id)" alt="@productList(i).prod_name" width="100" height="125" id="Image1"></a>
+						</div>
+                        
+                          <div class="cartProdInfo" id="cartProdInfo">
+                       	  <div class="cartgametitle" id="cartInfo">@productList(i).prod_name</div>
+                          <div class="cartgamePlatfrom" id="cartInfo">Platform: @productList(i).platform</div>
+                          <div class="cartgameprice" id="cartInfo">&euro;@("%.2f".format(productList(i).price))</div>
+                          
+                          
+                          <div class="cartquantity" id="cartInfo">       
+              @if(productList(i).getStockLevel() > 0){
+                       @helper.form(action = routes.ProductsController.addToCart(customer.cust_id, productList(i).prod_id)){
+                              <div id="addtocart"><input type="image" style="width:200px" src="@routes.Assets.at("images/icon/addtocart.png")" value="Submit"></div>
+               }}
+                          </div>
+                          
+                          
+                          <div class="cartLinePrice" id="cartInfo"></div>
+                          <div class="wishlistremove" id="cartInfo"><a href="@routes.CustomerController.removeFromWishlist(customer.cust_id, productList(i).prod_id)" onclick="return confirm('Are you sure you wish to remove this item?');"><img src="@routes.Assets.at("images/icon/deletebutton1.png")""value="delete"></div>
+                        </div>
+              </div>
+              
+              }
+					          
+          </div>
+              
+              
+           
+                  
+              
+            <div class="cartbottom" id="bottom">
+              
+                 
+            
+                  
+            </div>
+	</div>
+
+	</div>
+
+
+}
+
+}
+

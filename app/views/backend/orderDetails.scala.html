@@ -1,0 +1,70 @@
+@(customer:Customer, cart:ShoppingCart, cartList:List[OrderDetails], productList:List[Product])
+@dashboardMain("Order Details"){
+ @flash.get("success")
+ 
+<div id="checkoutMainContainer">
+         
+	<div id="checkoutContainer" class="checkoutcontainer">
+                    
+            <div class="checkoutleft" id="left">
+              
+                    
+        @for(i <- 0 until cartList.length){
+            <div class="checkoutproduct" id="checkoutproduct"> 
+                
+                  
+                  
+                <div id="checkoutImage" class="checkoutImage"><a href="@routes.ProductsController.displayProduct(productList(i).prod_id)" ><img src="@routes.ProductsController.image(cartList(i).prod_id)" alt="" width="150" height="188" id="Image1"></a>
+						</div>
+                        
+                        <div class="checkoutProdInfo" id="checkoutProdInfo">
+                       	  <div class="checkoutgametitle" id="checkoutInfo">@productList(i).prod_name</div>
+                          <div class="checkoutgamePlatfrom" id="checkoutInfo">Platform: @productList(i).platform</div>
+                          <div class="checkoutgameprice" id="checkoutInfo">Unit Price: &euro;@("%.2f".format(productList(i).price))</div>
+                          <div class="checkoutcheckoutquantity" id="checkoutInfo">Quantity: @cartList(i).qty</div>
+                          <div class="checkoutLinePrice" id="checkoutInfo">Line Price: &euro;@("%.2f".format(cartList(i).line_total))</div>
+                        </div>
+            </div>
+        
+        }
+					          
+          </div>
+              
+            <div class="checkoutright" id="right">
+            		<div class="total" id="total"><h2>Order Summary</h2></div>
+                    <div class="total" id="total">Post &amp; Packaging:</div><div id="pp">&euro;@("%.2f".format(cart.shipping_cost))</div>
+                    <div class="total" id="total">Items Total:</div><div id="pp">&euro;@("%.2f".format(cart.total))</div>
+                    <div class="subtotal" id="total">Payment Total:</div><div id="pp" style="color: #A2191B">&euro;@("%.2f".format(cart.subtotal))</div>
+                    <div class="total" id="total">Email:</div><div id="email">@customer.email</div>
+
+                    
+                    <div class="deliveryaddress" id="deliveryaddress">Delivery Address:</div><div id="deliveryaddressdetails" style="text-align: left; padding-left:41px;">
+                        
+                        <p>@customer.cust_fname @customer.cust_lname</p>
+                        <p>@cart.billing_address1</p>
+                          <p>@cart.billing_address2</p>
+                          <p>@cart.billing_city</p>
+                          <p>@cart.billing_country</p></div>
+                    @if(cart.transaction_status == "Open"){
+                    <p>Transaction not yet paid for</p>
+                    }else{
+                    @if(cart.transaction_status =="Shipped"){
+                    <p>Transaction is shipped</p>
+                    }else{
+                    @helper.form(action = routes.ProductsController.markAsShipped(cart.shoppingcart_id)){   
+                    <div class="totalButton" id="total"><input type="image" src="@routes.Assets.at("images/icon/shiporder.png")" value="CheckOut"></div>
+                      }
+                      @helper.form(action = routes.ManagementController.cancelOrder(cart.shoppingcart_id)){   
+                    <div class="totalButton" id="total"><input type="image" src="@routes.Assets.at("images/icon/cancelorder.png")" value="CheckOut"></div>
+                      }
+                      }
+                      }
+
+            </div>                  
+              
+     
+            
+	</div>
+</div>       
+   
+}

@@ -1,0 +1,21 @@
+@backend.dashboardMain("Management Portal") {
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Management Portal</title>
+    </head>
+    <h1>Management Portal </h1>
+    <p><a href="@routes.ManagementController.logout()">Logout</a></p>
+    <p><a href="@routes.CustomerController.customerList()">View Customers</a></p>
+    <p><a href="@routes.ProductsController.productOverview()">View all products</a></p>
+    <p><a href="@routes.ProductsController.addProduct()">Add new products</a></p>
+    <p><a href="@routes.ManagementController.contactList()">View current Contacts</a></p>
+</html>
+
+}

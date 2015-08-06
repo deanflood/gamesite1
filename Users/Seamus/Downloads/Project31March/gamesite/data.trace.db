@@ -1,0 +1,199 @@
+04-05 12:25:22 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "SHOPPINGCART_ID" not found; SQL statement:
+create table orderdetails
+(
+transaction_id number,
+prod_id number,
+qty number,
+line_total number,
+Primary Key(ShoppingCart_id,prod_id),
+FOREIGN Key (ShoppingCart_id)references ShoppingCart(ShoppingCart_id)on delete set null,
+FOREIGN Key (prod_id)references Product(prod_id)on delete set null
+) [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.table.Table.getColumn(Table.java:626)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:104)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:70)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:169)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1321)
+	at org.h2.server.web.WebApp.query(WebApp.java:1010)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:972)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:959)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+04-05 12:25:22 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "CUST_ID" not found; SQL statement:
+create table Contact
+(
+contact_id number,
+cust_email varchar2(255),
+topic varchar2(255),
+query varchar2(4000),
+date_created timestamp,
+status varchar2(255)check (status in ('Open','Closed')),
+Primary Key(contact_id),
+Foreign Key(cust_id)references Customer(cust_id)on delete cascade
+) [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.table.Table.getColumn(Table.java:626)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:75)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:188)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:70)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:169)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1321)
+	at org.h2.server.web.WebApp.query(WebApp.java:1010)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:972)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:959)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+04-05 12:25:56 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "EMP_FNAME"; expected "EXPLAIN, EXECUTE, {"; SQL statement:
+EMP_FNAME [42001-175]
+04-05 12:26:50 jdbc[6]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-175]
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.message.DbException.get(DbException.java:138)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:171)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:90)
+	at org.h2.Driver.connect(Driver.java:73)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:215)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:351)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:238)
+	at scala.collection.immutable.List.map(List.scala:274)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:238)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:91)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:91)
+	at scala.collection.immutable.List.foreach(List.scala:383)
+	at play.api.Play$$anonfun$start$1.apply$mcV$sp(Play.scala:91)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:91)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:91)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.Play$.start(Play.scala:90)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:157)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:130)
+	at scala.Option.map(Option.scala:145)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:130)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:128)
+	at scala.util.Success.flatMap(Try.scala:230)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:128)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:120)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	... 39 more
+04-05 12:26:50 jdbc[6]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-175]
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.message.DbException.get(DbException.java:138)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:171)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:90)
+	at org.h2.Driver.connect(Driver.java:73)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:215)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:351)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:238)
+	at scala.collection.immutable.List.map(List.scala:274)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:238)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:91)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:91)
+	at scala.collection.immutable.List.foreach(List.scala:383)
+	at play.api.Play$$anonfun$start$1.apply$mcV$sp(Play.scala:91)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:91)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:91)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.Play$.start(Play.scala:90)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:157)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:130)
+	at scala.Option.map(Option.scala:145)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:130)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:128)
+	at scala.util.Success.flatMap(Try.scala:230)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:128)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:120)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	... 39 more
+04-06 16:12:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.price = ?  [22018-175]
+04-06 16:12:52 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:15:02 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:19:28 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:20:49 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:28:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:28:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:28:49 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.price = ?  [22018-175]
+04-06 16:28:55 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.price = ?  [22018-175]
+04-06 16:29:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:29:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:56:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:57:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.age_rating = ?  and t0.price = ?  [22018-175]
+04-06 16:57:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting ; SQL statement:
+select t0.prod_id c0, t0.prod_name c1, t0.prod_desc c2, t0.genre c3, t0.age_rating c4, t0.review_score c5, t0.price c6, t0.sale_price c7, t0.platform c8, t0.stock_level c9, t0.prod_type c10, t0.image c11, t0.supplier c12 from product t0 where t0.genre = ?  and t0.platform = ?  and t0.price = ?  [22018-175]

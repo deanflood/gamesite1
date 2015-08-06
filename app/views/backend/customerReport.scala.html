@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   	<head>
+		<title>Customer Report</title>
+		<meta name="description" content="chart created using amCharts live editor" />
+                <link rel="stylesheet" type="text/css" href='@routes.Assets.at("Stylesheets/portalstyle.css")'>
+                <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
+
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="http://cdn.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="http://cdn.amcharts.com/lib/3/pie.js"></script>
+                <script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/serial.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/none.js"></script>
+<script>
+function printFunction() {
+    window.print();
+}
+</script>
+
+		<!-- amCharts javascript code -->
+        
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"pathToImages": "http://cdn.amcharts.com/lib/3/images/",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"titleField": "country",
+					"valueField": "Num of Customers",
+					"fontSize": 12,
+					"theme": "dark",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [],
+					"dataProvider": [
+						
+						{
+							"country": "Ireland",
+							"Num of Customers": "@Customer.searchByCountry("Ireland")"
+						},
+						{
+							"country": "USA",
+							"Num of Customers": "@Customer.searchByCountry("USA")"
+						},
+						
+						{
+							"country": "UK",
+							"Num of Customers": "@Customer.searchByCountry("UK")"
+						},
+						{
+							"country": "Rest of World",
+							"Num of Customers": "@Customer.searchByCountry("Rest of World")"
+						}
+					]
+				}
+			);
+		</script>
+        <body>        
+        <H3>Customer Location Chart</H3>
+		<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;" ></div>
+                <button onclick="printFunction()">Print this page</button>
+                <a href="@routes.ManagementController.reports()" ><button>Return to Reports</button></a>
+        </body>
+</html>

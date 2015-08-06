@@ -1,0 +1,69 @@
+@(productForm:Form[Product])
+@import helper._
+
+
+@dashboardMain("Add Product"){
+
+<div id="gridContainer">
+    <div id="addproduct">
+        
+    <h1>Add a new product </h1>
+<div id =" prodflash"style="color:red">
+        @flash.get("success")</div>
+    @helper.form(action = routes.ProductsController.save(), 'enctype -> "multipart/form-data"){
+    <fieldset>
+       
+            
+        <p>
+            @helper.inputText(productForm("prod_name"),'_label -> "Name" )
+        </p>
+        <p>
+            @helper.textarea(productForm("prod_desc"), args = 'rows -> 5, 'cols -> 60, '_label -> "Description")
+        </p>
+        <p>
+            @select(productForm("genre"),
+   options(Seq("Action","Sports","Role Playing","Fantasy", "Driving","First Person Shooter","Adventure","Simulation","Puzzle","Multiplayer","Strategy")),'_label -> "Genre", '_default -> "-- Select Genre --")
+        </p>
+        <p>
+            @inputRadioGroup(
+            productForm("age_rating"), options=options("3" -> "3" , "12"->"12","16"->"16","18"->"18"),'_label -> "Age Rating"
+            )
+
+            
+        </p>
+        <p>
+            @helper.inputText(productForm("price"),'_label -> "Price")
+        </p>
+        <p>
+            @select(productForm("platform"),
+   options(Seq("XBOXONE","XBOX360","PS4","PS3","WIIU","3DS")),'_label -> "Platform", '_default -> "-- Select Platform --")
+        </p>
+        <p>
+            @helper.inputText(productForm("stock_level"),'_label -> "Stock In")
+        </p>
+        <p>
+            @helper.inputText(productForm("supplier"),'_label -> "Supplier")
+        </p>
+        <p>
+            @helper.inputFile(productForm("image"),'_label -> "Image (.png, .jpeg)")
+               @if(!productForm("image").valueOr("").isEmpty()){
+        <div>
+               <img style="position:relative; left:10px;height:80px"src="/image/@productForm("prod_id").value">  
+            </div>
+              
+        }
+       
+        
+    </fieldset>
+    <p>
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </p>
+    </div>
+   
+</div>
+
+    
+  
+}
+
+}

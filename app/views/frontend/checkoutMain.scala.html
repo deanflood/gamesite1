@@ -1,0 +1,39 @@
+@(title: String, customer: Customer)(content: Html)
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" type="text/css" href='@routes.Assets.at("Stylesheets/main.css")'>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
+        <script type="text/javascript">
+window.onload = function(){
+  var text_input = document.getElementById ('qty');
+  text_input.focus ();
+  text_input.select ();
+}
+</script>
+    </head>
+        <body>
+            @if(flash.containsKey("success")){
+                <div>
+                @flash.get("Success")}
+                </div>
+            @if(flash.containsKey("error")){
+                <div>
+                @flash.get("Error")
+                </div>            
+            }
+            
+    
+            <div id = "mainBody" >
+                <div id = "mainContainer" >
+                    @content                        
+                </div>
+            </div>                
+              <div id="mainFooter">
+                 <p>&copy;2015 gamesdirect all rights reserved.</p>
+                </div>
+        </body>
+
+</html>

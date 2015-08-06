@@ -1,0 +1,38 @@
+@(contactForm: Form[Contact], customer: Customer)
+@import helper._
+@main("Contact Us", customer) {
+  @helper.form(routes.CustomerController.contactSubmit()) {  
+    @if(flash.contains("success")) {
+    <p>
+        @flash.get("success")
+        }
+<div id="mainContainer">
+       
+    <div id="gridContainer">
+
+        <embed src="@routes.Assets.at("UserManual.pdf")" width="920" height="800">   
+                    
+        <h1>Contact Us</h1>
+        <p>If you still have any questions, feel free to contact us by filling in the form below</p>
+            <p>
+            @select(contactForm("topic"),
+            options(Seq("Registration","Returns","Game Purchased", "Cancel Order", "Lost Login Details", "Other")),'_label -> "What is this query in relation to:", '_default -> "-- Select Query --")
+           </p>
+           
+            <p>
+            @helper.textarea(contactForm("query"), args = 'rows -> 5, 'cols -> 60, '_label -> "Description of your query")
+            </p>
+            
+            <p>
+            @if(customer != null){
+            	@helper.inputText(contactForm("cust_email").copy(value=Some(customer.email)),'_label -> "Email Address")
+                    }else{
+                        @helper.inputText(contactForm("cust_email"),'_label -> "Email Address")}
+                            <input type="submit" name="submit" id="submit" value="Submit">
+            </p>
+    </div>
+       
+</div>
+}
+}
+

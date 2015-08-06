@@ -1,0 +1,66 @@
+@import helper._
+@dashboardMain("Create Sale"){
+
+<div id ="gridContainer">
+    <div id="salemain">
+    <h1>Create A Sale</h1>
+    <div style="color:red">@flash.get("success")</div>
+
+       @helper.form(action = routes.ManagementController.createsale()){
+        
+      
+        <div>
+            <form>
+                
+                <label>Genre: </label>
+                <select name="genre">
+                    <option value="Action">Action</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Role Playing">Role Playing</option>
+                    <option value="Fantasy">Fantasy</option>
+                     <option value="Driving">Driving</option>
+                      <option value="First Person Shooter">First Person Shooter</option>
+                       <option value="Adventure">Adventure</option>
+                        <option value="Simulation">Simulation</option>
+                         <option value="Puzzle">Puzzle</option>
+                          <option value="Multiplayer">Multiplayer</option>
+                           <option value="Strategy">Strategy</option>
+                  </select>
+
+                <label>Percentage Off: </label><input type="text" id="percentage"  name="percentage" size="1">
+                
+                <input type="submit" onclick ="myFunction('genre','percentage')" value="submit">
+            </form>
+            }
+       </div>
+        
+        <div>
+            @helper.form(action = routes.ManagementController.undoSale()){
+             
+            <form>
+                <h3>Remove Sale</h3>                
+                <select name="undogenre">
+                    <option value="Action">Action</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Role Playing">Role Playing</option>
+                    <option value="Fantasy">Fantasy</option>
+                     <option value="Driving">Driving</option>
+                      <option value="First Person Shooter">First Person Shooter</option>
+                       <option value="Adventure">Adventure</option>
+                        <option value="Simulation">Simulation</option>
+                         <option value="Puzzle">Puzzle</option>
+                          <option value="Multiplayer">Multiplayer</option>
+                           <option value="Strategy">Strategy</option>
+                  </select>
+                <input type="submit" onclick ="myFunction('undogenre')" value="submit">
+            </form>
+            }
+    </div>
+    
+    
+</div>
+</div>
+}
+
+       
+       

@@ -1,0 +1,42 @@
+@import helper._
+@(contactForm:Form[Contact])
+@dashboardMain("Update Contact"){
+
+<div id="gridContainer">
+    <h1>Update Contact </h1>
+    <h2><a href="@routes.ManagementController.contactList()">Back to Contacts</a></h2>
+
+    @helper.form(action = routes.CustomerController.contactSubmit()){
+    <fieldset>
+        <p>
+            @helper.inputText(contactForm("contact_id"),'_label -> "Contact ID",'readonly -> "readonly"  )
+        </p>  
+        <p>
+            @helper.inputText(contactForm("cust_email"),'_label -> "Email")
+        </p>
+        <p>
+            @helper.inputText(contactForm("topic"),'_label -> "Topic")
+        </p>
+        <p>
+            @inputDate(contactForm("date_created"), '_label -> "Date",  'type -> "date")
+        </p>
+        <p>
+            @textarea(contactForm("query"), args = 'rows -> 5, 'cols -> 60,'_label -> "Query")
+        </p>
+        <p>
+            @select(contactForm("status"),
+   options(Seq("Open","Closed")),'_label -> "Status")
+       
+        </p>
+                
+    </fieldset>
+    <p>
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </p>
+</div>
+    
+  
+
+
+    }  
+    }

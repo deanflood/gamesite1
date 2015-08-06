@@ -1,71 +1,56 @@
 package controllers;
 import models.Customer;
-import models.Login;
-import play.data.Form;
+import models.Product;
+import play.mvc.Security;
+import play.data.*;
+import play.mvc.*;
+import models.*;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Controller;
 import java.util.ArrayList;
 import java.util.List;
 import com.avaje.ebean.*;
 import views.html.*;
+import views.html.backend.*;
+import views.html.frontend.*;
+import static play.data.Form.*;
 
-public class Application extends Controller {
+
+import play.mvc.Http.Context;
+
+public class Application extends Controller { 
     
+    public static final Form<Contact> contactForm = Form.form(Contact.class);
    
-    
-    
-    private static final Form<Customer> customerForm = Form.form(Customer.class);
-    private static final Form<Login> loginForm = Form.form(Login.class);
-
-    public static Result index() {
-        return ok(index.render());
+    public static Result index() {        
+        Secured s  = new Secured();
+        String email = s.getUsername(Http.Context.current());         
+    return ok(index.render(Customer.findByEmail(email), Product.findTopRating())); 
+        
     }
     
-    public static Result register() {
-       return ok(register.render(customerForm));
+    public static Result shopfront() {
+        return ok(shopfront.render());
     }
     
-    public static Result custList(){
-        List<Customer> custs = Customer.findAll();
-        return ok(custList.render(custs));
-    }
-	
-    public static Result login(){
-        //List<Login> login = Login.findAll();
-        return ok(login.render(loginForm));
-    }
-	
-	public static Result cart(){
-       return ok(cart.render());
-    }
-	
-	public static Result contact(){
-       return ok(contact.render());
-    }
     
         
-    public static Result custSubmit(){
-        Form<Customer> boundForm = customerForm.bindFromRequest();
-    if(boundForm.hasErrors()) {
-      flash("error", "Please correct the form below.");
-      return badRequest(register.render(boundForm));
-    }
-     Customer c = boundForm.get();
-    c.sha1Password();
-    c.save();
-    return redirect(routes.Application.custList());
-  }
+   
     
-    public static Result attemptLogin(){
-        Form<Login> LoginBoundForm = loginForm.bindFromRequest();
-    if(LoginBoundForm.hasErrors()) {
-      flash("error", "Please correct the form below.");
-      return badRequest(login.render(LoginBoundForm));
+    public static Result advanceSearch() {
+        return TODO;
     }
-     Login l = LoginBoundForm.get();
-    l.sha1Password();
-    l.save();
-    return redirect(routes.Application.index());
-  }
-
+    
+    public static Result contact(){
+        Secured s  = new Secured();
+        String email = s.getUsername(Http.Context.current()); 
+       return ok(contact.render(contactForm, Customer.findByEmail(email)));
+    }
+    
+    
+    
 }
+
+
+

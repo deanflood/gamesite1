@@ -1,0 +1,52 @@
+@(customer:Customer, cart:ShoppingCart)
+@checkoutMain("Pay Now", customer){
+ 
+
+
+<div id="mainContainer">
+  
+  
+ <div id="checkoutMainContainer">
+         
+	  <div id="paypalContainer" class="paypalcontainer">
+            <div id="checkoutitlepaypal"><h2>Checkout with Paypal</h2></div>
+   		  <div class="paypalleft" id="paypalleft">
+              
+            <div class="paypalAddress1" id="paypalAddress1"> 
+            <h4>@customer.cust_fname @customer.cust_lname</h4>
+            <h4>@cart.billing_address1</h4>
+            <p>@cart.billing_address2</p>
+            <p>@cart.billing_city</p>
+            <p>@cart.billing_country</p>
+                
+                        
+                      
+            </div>
+					          
+        </div>
+              
+          <div class="paypalright" id="paypalright">
+   		    <div class="paypalicon" id="paypalicon"><img src="@routes.Assets.at("images/icon/paypal.png")" width="167" height="57" alt=""/></div>
+                    <div class="total" id="paytotal"><h3>Order Summary</h3></div>
+                  
+                    <div class="subtotal" id="paytotal">Payment Total:</div><div id="paypaltotal" style="color: #A2191B">&euro;@("%.2f".format(cart.subtotal))</div>
+                    
+                    <div id="creditcards"><img src="@routes.Assets.at("images/icon/creditcards.png")" width="259" height="40" alt=""/></div>
+              @helper.form(action = routes.CustomerController.pay(customer.cust_id, cart.shoppingcart_id)){
+                    <div class="paypalbutton" id="paypalbutton"><input type="image" src="@routes.Assets.at("images/icon/paypalbutton.png")"value="CheckOut"></div>
+           }
+          </div>
+                  
+              
+            <div class="checkoutbottom" id="bottom">
+              
+                  <div class="addressChange" id="addressChange">                  
+                  </div>
+                  
+            </div>
+            
+		</div>
+
+	</div>
+   
+}

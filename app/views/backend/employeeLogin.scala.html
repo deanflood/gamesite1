@@ -1,0 +1,27 @@
+@(loginForm: Form[ManagementController.Login])
+@import helper._
+@dashboardMain("Employee Login") {
+  @helper.form(routes.ManagementController.employeeauthenticate) {
+  
+<div id ="gridContainer">
+<div id="emploginmain">
+  <div>
+      
+      <h1>Employee Sign in</h1>
+      <p style="color: red">@flash.get("success")</p>
+   
+   <p>
+       <input type="username" name="username" placeholder="Username" value="@loginForm("username").value">
+   </p>
+   <p>
+       <input type="password" name="password" placeholder="Password">
+   </p>
+   <p>
+       <button type="submit">Login</button>
+   </p>
+  </div>
+</div>
+</div>
+}
+    
+}

@@ -1,0 +1,103 @@
+03-13 14:28:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PRODUCT" already exists; SQL statement:
+create table Product
+(
+prod_id number,
+prod_name varchar2(255),
+prod_desc varchar2(4000),
+genre varchar2(255),
+age_rating number,
+review_score number,
+price number check (price >0),
+sale_price number,
+platform varchar2(255),
+stock_level number check (stock_level>= 0),
+prod_type varchar2(255),
+image blob,
+supplier varchar2(255),
+Primary Key(prod_id)
+) [42101-175]
+03-13 14:29:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "PRODUCT_SEQ" already exists; SQL statement:
+create sequence product_seq
+start with 1
+increment by 1 [90035-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.command.ddl.CreateSequence.update(CreateSequence.java:58)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1321)
+	at org.h2.server.web.WebApp.query(WebApp.java:1010)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:972)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:959)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+03-13 14:29:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "PRODUCT_SEQ" already exists; SQL statement:
+create sequence product_seq
+start with 1
+increment by 1 [90035-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.command.ddl.CreateSequence.update(CreateSequence.java:58)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:181)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:156)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1321)
+	at org.h2.server.web.WebApp.query(WebApp.java:1010)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:972)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:959)
+	at org.h2.server.web.WebThread.process(WebThread.java:167)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Thread.java:745)
+03-13 15:38:23 jdbc[39]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-175]
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.message.DbException.get(DbException.java:138)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:171)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:90)
+	at org.h2.Driver.connect(Driver.java:73)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:215)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:351)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:238)
+	at scala.collection.immutable.List.map(List.scala:274)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:238)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:91)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:91)
+	at scala.collection.immutable.List.foreach(List.scala:383)
+	at play.api.Play$$anonfun$start$1.apply$mcV$sp(Play.scala:91)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:91)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:91)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.Play$.start(Play.scala:90)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:157)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:130)
+	at scala.Option.map(Option.scala:145)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:130)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:128)
+	at scala.util.Success.flatMap(Try.scala:230)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:128)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:120)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	... 39 more

@@ -1,0 +1,256 @@
+           
+        <div id="orderfiller"></div>
+<!--looping starts here-->
+              <div id="custviewContainer" class="custviewPage">
+                <div id="allcustview">
+                  
+                  <div class="custviewleft" id="custviewleft">
+                      
+                              <div class="custviewinfo" id="custviewinfoleft">
+                              <h2>CustomerID: 1234567</h2>
+                             
+   
+                              </div>
+            
+                   		</div>
+                 
+                    	<div class="custviewright" id="custviewright">
+                      
+                              <div class="custviewinfo" id="custviewinforight">
+                              <div id="custviewaddress">
+                              <p>Address1</p>
+                              <p>Address2</p>
+                              <p>county</p>
+                              <p>country</p>
+                              </div>
+                              
+                              <div id="custviewemail">
+                               <p>Name: Aaron Fogarty</p>
+                              <p>Date Of Birth: 1/02/10</p>
+                              <p>Email: aaron@gmail.com</p>
+                              <p>Phone: 132483u49</p>
+                              </div>
+                                
+                                 <div id="custviewbuttons">
+                                    <div class="custviewbutton" id="custviewbutton"><input type="image" style="width: 206px; height= 30px; position: relative;" src="../GamesDirectWebsite3/images/edit.png"value="CheckOut"></div>
+                                    <div class="custviewbutton" id="custdeletebutton"><input type="image" style="width: 206px; height= 30px; position: relative;" src="../GamesDirectWebsite3/images/deletecust.png"value="CheckOut"></div>
+                                
+                               
+                                </div>
+   
+                              </div>
+            
+                   		</div>
+              
+                   </div>
+                
+              </div>
+<!--looping ends here-->
+
+
+
+/*customer view starts here---------------------------------------------------------------------------------------------------*/
+#custviewContainer {
+  display: inline-block;
+  width: 960px;
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #494949;
+  background-color: #FFFFFF;
+  height: 108px;
+  border: thin solid #C0C0C0;
+  }
+#custviewleft {
+  position: relative;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  width: 274px;
+  height: 89px;
+  text-align: left;
+  border-color: #C0C0C0;
+  border-radius: 5px;
+  font-size: small;
+  line-height: 11pt;
+}
+#custviewright {
+  background-image: -webkit-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(249,249,249,1.00) 100%);
+  background-image: -moz-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(249,249,249,1.00) 100%);
+  background-image: -o-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(249,249,249,1.00) 100%);
+  background-image: linear-gradient(180deg,rgba(249,249,249,1.00) 0%,rgba(249,249,249,1.00) 100%);
+  float: right;
+  position: relative;
+  height: 89px;
+  width: 672px;
+  font-size: small;
+  line-height: 11pt;
+  border-color: #808080;
+  bottom: 97px;
+}
+#custviewbottom {
+  background-image: -webkit-linear-gradient(270deg,rgba(249,249,249,1.00) 70.73%,rgba(221,223,220,1.00) 100%);
+  background-image: -moz-linear-gradient(270deg,rgba(249,249,249,1.00) 70.73%,rgba(221,223,220,1.00) 100%);
+  background-image: -o-linear-gradient(270deg,rgba(249,249,249,1.00) 70.73%,rgba(221,223,220,1.00) 100%);
+  background-image: linear-gradient(180deg,rgba(249,249,249,1.00) 70.73%,rgba(221,223,220,1.00) 100%);
+  clear: both;
+  position: relative;
+  color: #393939;
+  text-align: left;
+  padding-left: 16px;
+  padding-top: 5px;
+  padding-right: 16px;
+  padding-bottom: 5px;
+  font-family: coda;
+  font-style: normal;
+  font-weight: 400;
+}
+#custviewinfoleft {
+  width: 250px;
+  position: relative;
+  height: 90px;
+  text-align: left;
+  padding-left: 30px;
+  margin-top: 50px;
+  background-image: -webkit-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  background-image: -moz-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  background-image: -o-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  background-image: linear-gradient(180deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  font-style: normal;
+  bottom: 43px;
+  line-height: 3pt;
+  float: left;
+}
+#custviewinforight {
+  width: 642px;
+  position: relative;
+  height: 90px;
+  text-align: left;
+  padding-left: 30px;
+  margin-top: 50px;
+  background-image: -webkit-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  background-image: -moz-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  background-image: -o-linear-gradient(270deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  background-image: linear-gradient(180deg,rgba(249,249,249,1.00) 0%,rgba(222,222,222,1.00) 100%);
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  font-style: normal;
+  bottom: 43px;
+  line-height: 3pt;
+  float: left;
+}
+.custviewbutton {
+}
+.custviewbutton:hover{
+  transition: all linear 0.20s;
+  background-color: #FFFFFF;
+  opacity: 0.75;
+}
+#custviewstatusbutton {
+  width: 206px;
+  position: relative;
+  bottom: -8px;
+}
+#custviewcartbutton {
+  width: 206px;
+  position: relative;
+}
+#custviewbuttons {
+  width: 204px;
+  height: 26px;
+  position: relative;
+  left: -9px;
+  float: right;
+  bottom: 116px;
+}
+
+#custviewbox {
+  font-size: small;
+  line-height: 10pt;
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  background-color: #FFFFFF;
+  overflow: scroll;
+  height: 85px;
+  min-width: 497px;
+}
+#custviewpage {
+  height: 53px;
+  padding-top: 47px;
+  background-color: #FFFFFF;
+  width: 958px;
+  position: fixed;
+  z-index: 1;
+  border: thin solid #959595;
+  border-radius: 3px;
+}
+#custviewdisplaybuttons {
+  position: relative;
+  float: right;
+  width: 660px;
+  height: 39px;
+  bottom: -11px;
+}
+#custviewclosedbutton {
+  position: relative;
+  left: 165px;
+  top: -34px;
+  width: 163px;
+  height: 35px;
+}
+#custviewopenbutton  {
+  width: 163px;
+  height: 35px;
+  position: relative;
+}
+#custviewallbutton {
+  height: 35px;
+  width: 163px;
+  left: 493px;
+  position: relative;
+  top: -104px;
+}
+#custviewshippedbutton {
+  height: 35px;
+  width: 163px;
+  position: relative;
+  top: -69px;
+  left: 329px;
+}
+#custviewbutton {
+  width: 206px;
+  height: 30px;
+  float: right;
+  position: relative;
+  bottom: 38px;
+}
+#custdeletebutton {
+  width: 206px;
+  height: 30px;
+  float: right;
+  position: relative;
+  bottom: 31px;
+}
+
+#custviewfiller {
+  height: 106px;
+}
+#custviewaddress {
+  position: relative;
+  width: 170px;
+  height: 68px;
+  bottom: -1px;
+}
+#custviewemail {
+  position: relative;
+  width: 170px;
+  height: 68px;
+  left: 170px;
+  bottom: 80px;
+}

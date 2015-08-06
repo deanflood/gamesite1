@@ -1,0 +1,108 @@
+@(products:List[Product], customer:Customer)
+@main("Product List", customer){
+@if(products.isEmpty){
+<h1>No products meet your search criteria</h1>
+}else{
+
+              <div id="allproductpageContainer" class="allproductPage">
+                 @for(product <- products){
+                  <div id="allproduct"><!--looping div start-->
+                    <div class="allprodleft" id="allprodleft">
+                        <div class="allprodimage" id="allprodimage">
+                            <a href="@routes.ProductsController.displayProduct(product.prod_id)"><img class="allprodImage" src="@routes.ProductsController.image(product.prod_id)" width="98" height="125" alt=""/></a>                        
+                        </div>
+                    </div>
+                 
+                    	<div class="allprodright" id="allprodright">
+                      
+                              <div class="allprodpageinfo" id="allprodpageinfo">
+                              <h2>@product.prod_name</h2>
+                              <p>@product.platform</p>
+                              <div id="allprodrating"><table width="200">
+                                  
+                                  
+                                  @if(product.number_of_reviews > 0){
+              <td>Rating:
+              
+                  @if((product.review_score/product.number_of_reviews) < 4.3 ){
+                  @for(i <- 1 to 5){
+                  
+                  @if((product.review_score/product.number_of_reviews) >= i ){
+                  <img src="@routes.Assets.at("images/icon/star.png")" height="10"width="10"/>
+                  }else{<img src="@routes.Assets.at("images/icon/stargrey.png")" height="10"width="10"/>}
+                                   
+                  }}else{ @for(i <- 1 to 5){
+                                 
+                  <img src="@routes.Assets.at("images/icon/star.png")" height="10"width="10"/>}}}
+                  
+                  
+              @if(product.number_of_reviews == null || product.number_of_reviews == 0){  
+                 <td>Rating:
+                  @for(i <- 1 to 5){
+                  
+                  <img src="@routes.Assets.at("images/icon/stargrey.png")" height="10"width="10"/>
+                  
+                  }
+                  }
+                 </td></table></div>
+                  
+                  @if(product.sale_price == 0){<p>&euro;@("%.2f".format(product.price))</p>
+                  }else{<p><strike>&euro;@("%.2f".format(product.sale_price))</strike>    <span style="color: red">&euro;@("%.2f".format(product.price))</span></p>}
+                              
+                              @if(customer != null ){
+                    @if(product.stock_level > 0){        
+                        @helper.form(action = routes.ProductsController.addToCart(customer.cust_id, product.prod_id)){              
+                                          <div id="allprodbuttons">
+                                    <div class="allprodpagebutton" id="allprodcartbutton"><input type="image" style="width: 206px; height= 30px; position: relative;" src="@routes.Assets.at("images/icon/addtocartprodpage.png")" value="CheckOut"></div>
+                        }
+                        
+                        @helper.form(action = routes.CustomerController.addToWishList(customer.cust_id, product.prod_id)){
+                           <div class="allprodpagebutton" id="allprodwishbutton"><input type="image" style="width:206px; height= 30px;" src="@routes.Assets.at("images/icon/addtowishlist2.png")" value="CheckOut"></div>
+                                </div>
+                        }
+                        }else{
+                        <div id="allprodbuttons">
+                        <div class="allprodpagebutton" id="allprodwishbutton"><input onclick="return alert('Product Currently out of stock. ');" type="image" style="width:206px; height= 30px;" src="@routes.Assets.at("images/icon/outofstock.png")" value="CheckOut"></div>
+   @helper.form(action = routes.CustomerController.addToWishList(customer.cust_id, product.prod_id)){
+                           <div class="allprodpagebutton" id="allprodwishbutton"><input type="image" style="width:206px; height= 30px;" src="@routes.Assets.at("images/icon/addtowishlist2.png")" value="CheckOut"></div>
+                      }
+                        </div>
+                        }
+                        
+            }else{ @helper.form(action = routes.CustomerController.login()){  
+                              <div id="allprodbuttons">
+                                    <div class="allprodpagebutton" id="allprodcartbutton"><input type="image" style="width: 206px; height= 30px; position: relative;" src="@routes.Assets.at("images/icon/addtocartprodpage.png")" value="CheckOut"></div>
+                     <div class="allprodpagebutton" id="allprodwishbutton"><input type="image" style="width:206px; height= 30px;" src="@routes.Assets.at("images/icon/addtowishlist2.png")" value="CheckOut"></div>
+                                </div>
+                                    }
+                       }
+                   
+                                
+                                 
+                                 
+                                
+                                        <div class="allpegi" id="allpegi">
+                                   @if(product.age_rating == 3){
+                                        <img src="@routes.Assets.at("images/pegiImages/pegi3.png")" height="55"width="45"/>}
+                                    @if(product.age_rating == 12){
+                                        <img src="@routes.Assets.at("images/pegiImages/pegi12.png")" height="55"width="45"/>}
+                                    @if(product.age_rating == 16){
+                                        <img src="@routes.Assets.at("images/pegiImages/pegi16.png")" height="55"width="45"/>}
+                                    @if(product.age_rating == 18){
+                                        <img src="@routes.Assets.at("images/pegiImages/pegi18.png")" height="55"width="45"/>}
+                                        
+                                         </div>      
+                              </div>
+            
+                   		</div>
+              
+                   </div>
+                  }
+                 <!--looping div end-->
+                
+              </div>
+ }
+ }
+
+
+

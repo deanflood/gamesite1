@@ -1,0 +1,94 @@
+@(cartList:List[ShoppingCart])
+@dashboardMain("Order List"){
+
+<p>View by: <a href="@routes.ManagementController.orderByStatus("Open")">Open</a> <a href="@routes.ManagementController.orderByStatus("Pending")">Pending</a> <a href="@routes.ManagementController.orderByStatus("Shipped")">Shipped</a>
+
+    
+@if(cartList.isEmpty){
+
+       <div id="orderpage">
+           <div id ="noOrders">
+              <p style ="color: red">No Orders Match @flash.get("success")</p>
+           </div>
+                  <div class="orderdisplaybuttons" id="orderdisplaybuttons">
+                @helper.form(action = routes.ManagementController.orderByStatus("Open")){
+                      <div class="orderbutton" id="orderopenbutton"><input type="image" src="@routes.Assets.at("images/icon/openbutton.png")" width="160" height="35" alt="" />}
+                      </div>
+                      
+                      @helper.form(action = routes.ManagementController.orderByStatus("Pending")){
+                      <div class="orderbutton" id="orderclosedbutton"><input type="image" src="@routes.Assets.at("images/icon/orderpending.png")" width="160" height="35" alt="" />}
+                      </div>
+                      @helper.form(action = routes.ManagementController.orderByStatus("Shipped")){
+                      <div class="orderbutton" id="ordershippedbutton"><input type="image" src="@routes.Assets.at("images/icon/shipped.png")" width="160" height="35" alt="" />}
+                      </div>
+                      @helper.form(action = routes.ManagementController.orders()){
+                      <div class="orderbutton" id="orderallbutton"><input type="image" src="@routes.Assets.at("images/icon/allorders.png")" width="160" height="35" alt="" />}
+                      </div>
+                      
+                    </div>
+              </div>
+
+
+           }else{   
+           <div id="orderpage">
+              <div id ="noOrders">
+              <p style ="color: red">@flash.get("success")</p>
+           </div>
+                  <div class="orderdisplaybuttons" id="orderdisplaybuttons">
+                @helper.form(action = routes.ManagementController.orderByStatus("Open")){
+                      <div class="orderbutton" id="orderopenbutton"><input type="image" src="@routes.Assets.at("images/icon/openbutton.png")" width="160" height="35" alt="" />}
+                      </div>
+                      
+                      @helper.form(action = routes.ManagementController.orderByStatus("Pending")){
+                      <div class="orderbutton" id="orderclosedbutton"><input type="image" src="@routes.Assets.at("images/icon/orderpending.png")" width="160" height="35" alt="" />}
+                      </div>
+                      @helper.form(action = routes.ManagementController.orderByStatus("Shipped")){
+                      <div class="orderbutton" id="ordershippedbutton"><input type="image" src="@routes.Assets.at("images/icon/shipped.png")" width="160" height="35" alt="" />}
+                      </div>
+                      @helper.form(action = routes.ManagementController.orders()){
+                      <div class="orderbutton" id="orderallbutton"><input type="image" src="@routes.Assets.at("images/icon/allorders.png")" width="160" height="35" alt="" />}
+                      </div>
+                      
+                    </div>
+              </div>
+        <div id="orderfiller"></div>
+@for(i <- 0 until cartList.length){
+              <div id="orderContainer" class="orderPage">
+                <div id="allorder">
+                  
+                 
+                    	<div class="orderright" id="orderright">
+                      
+                              <div class="orderinfo" id="orderinfo">
+                              <h2>ORDER ID:@cartList(i).shoppingcart_id@cartList(i).cust_id</h2>
+                              <p>Date Ordered: @cartList(i).date_made</p>
+                              @if(cartList(i).transaction_status=="Open"){
+                              <h2 style="color:#0080E9">Status: <span style="color:#0080E9">@cartList(i).transaction_status</span></h2>
+                                }
+                               @if(cartList(i).transaction_status=="Pending"){
+                               <h2 style="color:#0080E9">Status: <span style="color:#FF2C25"> @cartList(i).transaction_status<span></h2>
+                                }
+                                @if(cartList(i).transaction_status=="Shipped"){
+                                <h2 style="color:#0080E9">Status: <span style="color:#67BF1B">@cartList(i).transaction_status</span></h2>
+                                }
+                                @if(cartList(i).transaction_status=="Cancelled"){
+                                <h2 style="color:#0080E9">Status: <span style="color:black">@cartList(i).transaction_status</span></h2>
+                                }
+                              
+                                 <div id="orderbuttons">
+                                     @helper.form(action = routes.ManagementController.orderDetails(cartList(i).shoppingcart_id)){  
+                                    <div class="orderbutton" id="orderbutton"><input type="image" style="width: 206px; height= 30px; position: relative;" src="@routes.Assets.at("images/icon/viewordereditstatus.png")"value="CheckOut"></div>
+                                }
+                               
+                                </div>
+   
+                              </div>
+            
+                   		</div>
+              
+                   </div>
+                
+              </div>
+}   
+}
+}
